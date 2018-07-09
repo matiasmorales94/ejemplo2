@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Tabla Comapañias</title>
+    <link  rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/jquery.dataTables.min.css" />
+</head>
+<body>
+    <div class="container">
+   
+        <table id="myTable" class="table table-condensed table-responsive table-hover table-bordered" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Url</th>
+
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+       
+
+                </tr>
+            </tfoot>
+        </table>
+</div>
+        
+</body>
+</html>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "ajax": {
+                "url": "../Compania/getCompanias",
+                "type": "GET",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": "id", "autoWidth": true },
+                { "data": "nombre", "autoWidth": true },
+                { "data": "url", "autoWidth": true }
+            ]
+        });
+    });
+
+</script>
+
